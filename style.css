@@ -12,4 +12,8 @@
 li {
   float: left;
   padding: 30px;
+  list-style-type: none;
+}
+#submit {
+  clear: both;
 }
