@@ -1,0 +1,15 @@
+#noaa {
+  float: left;
+  width: 50px;
+}
+#right {
+  float: right;
+  width: 130px;
+}
+#nws {
+  width: 575px;
+}
+li {
+  float: left;
+  padding: 30px;
+}
