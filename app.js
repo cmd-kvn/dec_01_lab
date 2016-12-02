@@ -1,5 +1,54 @@
 'use strict';
 
+// Get the element
+var makeConversion = document.getElementById('form');
+var displayMessage = document.getElementById('display_message');
+
+// Add the listener
+makeConversion.addEventListener('submit', handleSubmit);
+
+// Create the handler
+function handleSubmit(event) {
+  event.preventDefault(); // Prevent the page from refreshing
+
+  // Take in input
+  var inputNumber = event.target.input_number.value;
+  var conversionSelection = event.target.conversions.value;
+  console.log('conversionSelection: ', conversionSelection);
+  console.log('inputnum: ', inputNumber);
+  // Handle input
+  if (conversionSelection === 'inches_centimeters') {
+    var conversion = convertInToCm(inputNumber);
+    displayMessage.textContent = inputNumber + ' inch(es) is equal to ' + conversion + ' centimeters.';
+  } else if (conversionSelection === 'centimeters_inches') {
+    conversion = convertCmToIn(inputNumber);
+    displayMessage.textContent = inputNumber + ' centimeter(s) is equal to ' + conversion + ' inches.';
+  } else if (conversionSelection === 'ounces_milliliters') {
+    conversion = convertFlOzToMl(inputNumber);
+    displayMessage.textContent = inputNumber + ' fluid ounce(s) is equal to ' + conversion + ' milliliters.';
+    console.log('conversion: ', conversion);
+    console.log('inputNumber', inputNumber);
+  } else if (conversionSelection === 'milliliters_ounces') {
+    conversion = convertMlToFlOz(inputNumber);
+    displayMessage.textContent = inputNumber + ' milliliter(s) is equal to ' + conversion + ' fluid ounces.';
+  } else if (conversionSelection === 'miles_kilometers') {
+    conversion = convertMiToKm(inputNumber);
+    displayMessage.textContent = inputNumber + ' mile(s) is equal to ' + conversion + ' kilometers.';
+  } else if (conversionSelection === 'kilometers_miles') {
+    conversion = convertKmToMi(inputNumber);
+    displayMessage.textContent = inputNumber + ' kilometer(s) is equal to ' + conversion + ' miles.';
+  } else if (conversionSelection === 'pounds_kilograms') {
+    conversion = convertLbToKg(inputNumber);
+    displayMessage.textContent = inputNumber + ' pound(s) is equal to ' + conversion + ' kilograms.';
+  } else if (conversionSelection === 'kilograms_pounds') {
+    conversion = convertKgToLb(inputNumber);
+    displayMessage.textContent = inputNumber + ' kilograms(s) is equal to ' + conversion + ' pounds.';
+  } else if (conversionSelection === 'shit_ton') {
+    displayMessage.textContent = convertEnglishShitTonToMetric(inputNumber);
+  }
+}
+
+//////////////////////////////////////
 // Capable of doing the following conversions:
 // inches to/from centimeters
 function convertInToCm (input) {
@@ -10,8 +59,8 @@ function convertInToCm (input) {
 
   // .toFixed(3) rounds the number object to the thousandth place
   return centimeters.toFixed(3);
+  console.log('in to cm runs');
 }
-console.log('test convert 3 in to cm:' + convertInToCm(3));
 
 function convertCmToIn (input) {
   var inches = 0;
@@ -20,8 +69,8 @@ function convertCmToIn (input) {
   inches = input * conversionRate;
 
   return inches.toFixed(3);
+  console.log('cm to in runs');
 }
-console.log('test convert 4 cm to in: ' + convertCmToIn(4));
 
 // fluid ounces to/from milliliters
 function convertFlOzToMl (input) {
