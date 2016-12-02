@@ -40,14 +40,7 @@ nav {
 }
 #local_searchbar {
   float:left;
-  outline: 1px solid black;
 }
 .clearfix {
   clear: both;
-}
-#espanol {
-  outline: 1px solid black;
-}
-#conditions {
-  outline: 1px solid black;
 }
